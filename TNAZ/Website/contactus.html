@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+
+        <script>
+           function validate() {
+   
+   if( document.RegForm.name.value == "" ) {
+      alert( "Please provide your First name!" );
+      document.RegForm.name.focus() ;
+      return false;
+   }
+      else if(!/^[a-zA-Z]*$/g.test(document.RegForm.name.value)) {
+      alert( "Invalid Characters!" );
+      document.RegForm.name.focus() ;
+      return false;
+   }
+
+   if( document.RegForm.PNum.value == "" ) {
+      alert( "Please provide your number!" );
+      document.RegForm.PNum.focus() ;
+      return false;
+   }
+      else if(/^[a-zA-Z]*$/g.test(document.RegForm.PNum.value)) {
+      alert( "Invalid Characters!" );
+      document.RegForm.PNum.focus() ;
+      return false;
+   }
+   else if( document.RegForm.PNum.value.length!== 10 ) {
+      alert( "Need 10 Characters!" );
+      document.RegForm.PNum.focus() ;
+      return false;
+   }
+
+   var email = document.RegForm.email.value;
+          atpos = email.indexOf("@");
+          dotpos = email.lastIndexOf(".");
+          
+
+          if( document.RegForm.email.value == "" ) {
+            alert( "Please enter your email!" );
+            document.RegForm.email.focus() ;
+            return false;
+          }
+          else if (atpos < 1 || ( dotpos - atpos < 2 )) {
+             alert("Please enter correct email ID")
+             document.RegForm.email.focus() ;
+             return false;
+          }
+
+          if( document.RegForm.msg.value == "" ) {
+      alert( "Please wirte your message!" );
+      document.RegForm.msg.focus() ;
+      return false;
+   }
+
+          }
+
+           
+
+        </script>         
+
+
+        <link rel="stylesheet" href="css/style1.css">
+    </head>
+    
+    <body>
+        <div class="filter">
+        </div>
+            <div class="container">
+                <div class="desc">
+                    <h1>What's on your mind :)</h1>
+                   <p>If you have any problems<br>
+                Talk to Us :)</p>
+                </div>
+                
+                <div class="form">
+                    <h1>Contact Us</h1>
+                    
+                    <form action = "" name = "RegForm" onsubmit = "return validate();">
+                      
+                        <input type="text" placeholder="Full name" name="name"><br>
+                        <input type="text" placeholder="Phone Number" name="PNum"><br>
+                     
+                        <input type="text" placeholder="E-mail" name="email"><br>
+               
+                        <textarea placeholder="message" name="msg"></textarea><br>
+                        
+                        <button>Subscribe</button>
+                    
+                    </form>
+                
+                </div>
+        
+            </div>
+    
+    </body>
+
+
+</html>

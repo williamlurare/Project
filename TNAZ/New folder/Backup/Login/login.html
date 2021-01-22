@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script type = "text/javascript">
+   
+       function validateEmail() {
+          var email = document.myForm.email.value;
+          atpos = email.indexOf("@");
+          dotpos = email.lastIndexOf(".");
+          
+
+          if( document.myForm.email.value == "" ) {
+            alert( "Please enter your email!" );
+            document.myForm.email.focus() ;
+            return false;
+          }
+          else if (atpos < 1 || ( dotpos - atpos < 2 )) {
+             alert("Please enter correct email ID")
+             document.myForm.email.focus() ;
+             return false;
+          }
+
+       
+
+       if( document.myForm.password.value == "" ) {
+            alert( "Please enter your password!" );
+            document.myForm.password.focus() ;
+            return false;
+         }
+         return( true );
+       }
+    //-->
+ </script>
+
+<script>
+   function validate() {
+   
+      if( document.RegForm.Fname.value == "" ) {
+         alert( "Please provide your First name!" );
+         document.RegForm.Fname.focus() ;
+         return false;
+      }
+         else if(!/^[a-zA-Z]*$/g.test(document.RegForm.Fname.value)) {
+         alert( "Invalid Characters!" );
+         document.RegForm.Fname.focus() ;
+         return false;
+      }
+
+      if( document.RegForm.Lname.value == "" ) {
+         alert( "Please provide your Last name!" );
+         document.RegForm.Fname.focus() ;
+         return false;
+      }
+         else if(!/^[a-zA-Z]*$/g.test(document.RegForm.Lname.value)) {
+         alert( "Invalid Characters!" );
+         document.RegForm.Lname.focus() ;
+         return false;
+      }
+
+
+      var email1 = document.RegForm.email1.value;
+          atpos = email1.indexOf("@");
+          dotpos = email1.lastIndexOf(".");
+          
+
+          if( document.RegForm.email1.value == "" ) {
+            alert( "Please enter your email!" );
+            document.RegForm.email1.focus() ;
+            return false;
+          }
+          else if (atpos < 1 || ( dotpos - atpos < 2 )) {
+             alert("Please enter correct email ID")
+             document.RegForm.email1.focus() ;
+             return false;
+          }
+
+          if( document.RegForm.uname.value == "" ) {
+         alert( "Please provide your user name!" );
+         document.RegForm.uname.focus() ;
+         return false;
+      }
+
+      if( document.RegForm.pass.value == "" ) {
+         alert( "Please provide your password!" );
+         document.RegForm.pass.focus() ;
+         return false;
+      }
+      if( document.RegForm.pass1.value == "" ) {
+         alert( "Please provide your password!" );
+         document.RegForm.pass1.focus() ;
+         return false;
+      }
+
+      password1 = RegForm.pass.value; 
+      password2 = RegForm.pass1.value; 
+
+       // If Not same return False.     
+        if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+
+
+   }
+  
+
+
+
+</script>
+
+
+	<title>Sign In</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cont">
+    <div class="form sign-in">
+      <form action = "" name = "myForm" onsubmit = "return validateEmail();">
+      <h2>Sign In</h2>
+      <label>
+        <span>Email Address</span>
+        <input type="text" name="email">
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password">
+      </label>
+      <button class="submit" type="submit" value="submit" >Sign In</button>
+      </form>
+      <a href ="ForgotPassword/Recovery.html"> <p class="forgot-pass">Forgot Password ?</p></a>
+
+      <h3 class="follow-us">Follow Us</h3>
+      <div class="social-media">
+        <ul>
+            <a href="https://web.facebook.com/william.lurare"><li><img src="css/img/facebook.png" alt=""></li></a>
+            <a href="https://www.instagram.com/williamlurare/"><li><img src="css/img/instagram-sketched.png" alt=""></li></a>
+            <a href="https://discord.com/channels/609104128546963466/609104129310195714"><li><img src="css/img/discord.png" alt=""></li></a> 
+            <a href="https://www.anu.ac.ke"><li><img src="css/img/anulogo.png" alt=""></li></a>
+        </ul>
+    </div>
+    </div>
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up">
+            <h2>New around here? ;)</h2>
+            <p>Sign up and experiences the system first hand!</p>
+        </div>
+        <div class="img-text m-in">
+            <h2>Already have an account?</h2>
+            <p>If you already have an existing account, Sign in.</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</span>
+          <span class="m-in">Sign In</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <h2>Sign Up</h2>
+        <form action = "" name = "RegForm" onsubmit = "return validate();">
+        <label>
+          <span>First Name</span>
+          <input type="text" name="Fname"> 
+        </label>
+        <label>
+          <span>Last Name</span>
+          <input type="text" name="Lname">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email1">
+        </label>
+        <label>
+          <span>Username</span>
+          <input type="text" name="uname">
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="pass">
+        </label>
+        <label>
+          <span>Confirm Password</span>
+          <input type="password" name="pass1">
+        </label>
+        <button type="submit"  value="submit" class="submit">Sign Up Now</button>
+      </div>
+    </div>
+  </div>
+  </form>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

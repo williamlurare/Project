@@ -1,0 +1,15 @@
+2019-07-31 14:49:11 0 [Note] Reading of all Master_info entries succeded
+2019-07-31 14:49:11 0 [Note] Added new Master_info '' to hash table
+2019-07-31 14:49:11 0 [Note] c:\xampp\mysql\bin\mysqld.exe: ready for connections.
+Version: '10.3.15-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2019-07-31 14:51:02 10 [Warning] Aborted connection 10 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:28:53 196 [Warning] Aborted connection 196 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:29:12 198 [Warning] Aborted connection 198 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:37:19 208 [Warning] Aborted connection 208 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:50:03 359 [Warning] Aborted connection 359 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:52:07 391 [Warning] Aborted connection 391 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 21:54:23 433 [Warning] Aborted connection 433 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 22:02:12 500 [Warning] Aborted connection 500 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 22:03:18 521 [Warning] Aborted connection 521 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 22:04:36 546 [Warning] Aborted connection 546 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2019-07-31 23:47:49 1603 [Warning] Aborted connection 1603 to db: 'hostel' user: 'root' host: 'localhost' (Got an error reading communication packets)
