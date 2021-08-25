@@ -42,7 +42,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
                      <div>
                          
                          <CardText className="CardText" >{comments.comment}</CardText>
-                         <CardText className="CardText alert-warning px-2 auth">--    {comments.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
+                         <CardText className="CardText alert-warning">--    {comments.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
                          </CardText>
                         
                          </div>       
