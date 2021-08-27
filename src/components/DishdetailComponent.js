@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 // If you click a card 
 
@@ -31,14 +31,14 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
     The key should be unique and key should be from data, 
     if your data doesn't contain unique id per object then use index as a key
     */
-    function renderComments(dish){
-        if(dish != null){
+    function renderComments(comments){
+        if(comments != null){
             return(
                 <div className="col-12 col-md-5 m-1">
                
                    <CardTitle className="Title"><h4>Comments</h4></CardTitle>
                 <CardBody>
-                    <CardTitle heading>{dish.comments.map(comments =>
+                    <CardTitle heading>{comments.map(comments =>
                      <div>
                          
                          <CardText className="CardText" >{comments.comment}</CardText>
@@ -69,16 +69,32 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
         console.log('Dishdeatail Component render is invoked')
 
         const selectedDish = props.dish
+        const comments = props.comments
 
         return(
 
             
                <div className="container">
-               <div className="row">
-                   {DishDetail}
-           
-               {renderDish(selectedDish)}
-               {renderComments(selectedDish)}
+                     <div className="row">
+                    <Breadcrumb>
+                    <BreadcrumbItem>
+                    <Link to='/menu'>
+                        Menu
+                    </Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>{props.dish.name}
+                    </BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>
+                </div>
+                    <div className="row">
+                        {DishDetail}
+                
+                    {renderDish(selectedDish)}
+                    {renderComments(comments)}
                </div>
                </div>
         

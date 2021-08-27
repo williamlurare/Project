@@ -42,3 +42,9 @@ address{
 .navbar-dark {
     background-color: #602194;
 }
+
+
+.img {
+   float: left;
+   padding-right: 15px;
+}
