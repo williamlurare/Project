@@ -43,7 +43,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
         render(){
         return (
 <>
-                    <Button outline="bg-primary"  onClick={this.ToggleComment}>
+                    <Button outline  className="text-warning bg-dark" onClick={this.ToggleComment}>
                          <span className="fa fa-pencil-square-o fa-lg"></span> Submit Comment
                      </Button>
                      <Modal isOpen={this.state.isCommentOpen} toggle={this.ToggleComment} className="modal-dialog-centered"
@@ -149,10 +149,10 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                         
                          </div>       
                     )}
-          </CardTitle>
-
+          </CardTitle><br />
+          <CommentForm  />
                 </CardBody>
-               <CommentForm  />
+              
                 </div>
             );  
         }
