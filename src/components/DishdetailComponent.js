@@ -1,9 +1,9 @@
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
-Label, Input, Button, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
+Label, Button, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
 import { Control, LocalForm, Errors } from 'react-redux-form';
-
+import { Loading } from './LoadingComponent';
 
 
 
@@ -36,8 +36,9 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
         }
 
         handleSubmit(values) {
-            console.log('Current State is:  ' +  JSON.stringify(values));
-            alert('Current State is:  ' +  JSON.stringify(values));
+            this.ToggleComment();
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+
         }
 
         render(){
@@ -48,12 +49,12 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                      </Button>
                      <Modal isOpen={this.state.isCommentOpen} toggle={this.ToggleComment} className="modal-dialog-centered"
                      >
-        <ModalHeader  className="bg-primary text-warning" toggle={this.ToggleComment}>Submit Comment</ModalHeader>
-        <ModalBody  className="bg-dark text-light">
+        <ModalHeader  className="bg-dark text-warning" toggle={this.ToggleComment}>Submit Comment</ModalHeader>
+        <ModalBody  className="bg-light text-success">
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
             <Row className="form-group">
             <div className="form-check">
-                                    <Label htmlfor="Rating" md={2} check>
+                                    <Label htmlfor="rating" md={2} check>
                                         <strong>Rating</strong>
                                     </Label>
                                     </div>  <br />
@@ -69,12 +70,12 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                                     </Col>
                 </Row><br />
                 <Row className="form-group">
-                    <Label htmlFor="password" md={3}>Your Name: </Label>
+                    <Label htmlFor="author" md={3}>Your Name: </Label>
                     <Col md={10}>
-                    <Control.text  model=".yourname" id="password" name="yourname" 
+                    <Control.text  model=".author" id="author" name="author" 
                     validators={{required, minLength: minLength(3), maxLength: maxLength(15), isCharacter}} />
 
-                    <Errors className="text-danger" model=".yourname" show="touched" 
+                    <Errors className="text-danger" model=".author" show="touched" 
                     messages={{
                         required: 'Dont leave the section empty',
                         minLength: 'Must be more than 3 chararters',
@@ -86,7 +87,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                 <Row className="form-group">
                               <Label htmlFor="feedback" md={4} >Comment: </Label>  
                                 <Col md={10}>
-                                    <Control.textarea model=".message" id="message" name="message" 
+                                    <Control.textarea model=".comment" id="comment" name="comment" 
                                     row="12" className="form-control"/>
 
                                 </Col>
@@ -133,24 +134,26 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
     The key should be unique and key should be from data, 
     if your data doesn't contain unique id per object then use index as a key
     */
-    function renderComments(comments){
+    function renderComments(comments, addComment, dishId){
         if(comments != null){
             return(
-                <div className="col-12 col-md-5 m-1">
+                <div className="col-12 col-md-5 m-1 CardText">
                
                    <CardTitle className="Title"><h4>Comments</h4></CardTitle>
                 <CardBody>
                     <CardTitle heading>{comments.map(comments =>
                      <div>
                          
-                         <CardText className="CardText" >{comments.comment}</CardText>
-                         <CardText className="CardText alert-warning">--    {comments.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
+                         <CardText className="CardText alert-warning" >{comments.comment}</CardText>
+                         <CardText>--    {comments.author}, {new Intl.DateTimeFormat('en-US', 
+                          { year: 'numeric', month: 'short', day: '2-digit'})
+                          .format(new Date(Date.parse(comments.date)))}
                          </CardText>
                         
                          </div>       
                     )}
           </CardTitle><br />
-          <CommentForm  />
+          <CommentForm dishId={dishId} addComment={addComment} />
                 </CardBody>
               
                 </div>
@@ -167,11 +170,35 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
     }
    
     const DishDetail = (props) => {
+        if (props.isLoading){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        else if (props.errMess){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            );
+        }
+
         
         console.log('Dishdeatail Component render is invoked')
 
+        
         const selectedDish = props.dish
         const comments = props.comments
+        const addComment = props.addComment
+        const dishId = props.dish.id
+
+     
 
         return(
 
@@ -196,7 +223,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                         {DishDetail}
                 
                     {renderDish(selectedDish)}
-                    {renderComments(comments)}
+                    {renderComments(comments,addComment,dishId)}
                </div>
                </div>
         
