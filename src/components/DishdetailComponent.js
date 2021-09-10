@@ -37,7 +37,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
 
         handleSubmit(values) {
             this.ToggleComment();
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
 
         }
 
@@ -134,7 +134,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
     The key should be unique and key should be from data, 
     if your data doesn't contain unique id per object then use index as a key
     */
-    function renderComments(comments, addComment, dishId){
+    function renderComments(comments, postComment, dishId){
         if(comments != null){
             return(
                 <div className="col-12 col-md-5 m-1 CardText">
@@ -153,7 +153,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                          </div>       
                     )}
           </CardTitle><br />
-          <CommentForm dishId={dishId} addComment={addComment} />
+          <CommentForm dishId={dishId} postComment={postComment} />
                 </CardBody>
               
                 </div>
@@ -195,7 +195,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
         
         const selectedDish = props.dish
         const comments = props.comments
-        const addComment = props.addComment
+        const postComment = props.postComment
         const dishId = props.dish.id
 
      
@@ -223,7 +223,7 @@ const isCharacter = (val) => (/^[A-Za-z]+$/).test(val);
                         {DishDetail}
                 
                     {renderDish(selectedDish)}
-                    {renderComments(comments,addComment,dishId)}
+                    {renderComments(comments,postComment,dishId)}
                </div>
                </div>
         
