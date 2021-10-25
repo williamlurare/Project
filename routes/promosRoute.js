@@ -8,7 +8,7 @@ const Promotions = require('../models/promotions')
 PromosRoute.use(bodyParser.json());
 
 PromosRoute.route('/')
-.options(cors,corsWithOptions, (req, res) => {
+.options(cors.corsWithOptions, (req, res) => {
     res.sendStatus(200);
 })
 .get(cors.cors, (req,res,next) => {
@@ -45,7 +45,7 @@ PromosRoute.route('/')
 });
 
 PromosRoute.route('/:promoId')
-.options(cors,corsWithOptions, (req, res) => {
+.options(cors.corsWithOptions, (req, res) => {
     res.sendStatus(200);
 })
 .get(cors.cors, (req,res,next) => {

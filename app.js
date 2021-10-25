@@ -4,14 +4,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var FileStore = require('session-file-store')(session);
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
-var promoRouter = require('./routes/promosRoute');
+var promosRouter = require('./routes/promosRoute');
 var leaderRouter = require('./routes/leaderRouter');
-var uploadRouter = require('./routes/uploadRouter');
+const uploadRouter = require('./routes/uploadRouter');
+const favoriteRouter = require('./routes/favoriteRouter')
 var config = require('./config');
 
 const mongoose = require('mongoose');
@@ -35,12 +35,13 @@ connect.then((db) => {
 
 var app = express();
 
+// Secure traffic only
 app.all('*', (req, res, next) => {
   if (req.secure) {
     return next();
   }
   else {
-    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort')+ req.url);
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
   }
 });
 
@@ -88,10 +89,10 @@ app.use('/users', users);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/dishes',dishRouter);
-app.use('/promotions',promoRouter);
+app.use('/promotions',promosRouter);
 app.use('/leaders',leaderRouter);
 app.use('/imageUpload',uploadRouter);
-
+app.use('/favorites',favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

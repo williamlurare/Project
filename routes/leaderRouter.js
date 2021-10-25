@@ -9,7 +9,7 @@ const Leaders = require('../models/leaders')
 leaderRouter.use(bodyParser.json());
 
 leaderRouter.route('/')
-.options(cors,corsWithOptions, (req, res) => {
+.options(cors.corsWithOptions, (req, res) => {
     res.sendStatus(200);
 })
 .get(cors.cors, (req,res,next) => {
@@ -46,7 +46,7 @@ leaderRouter.route('/')
 });
 
 leaderRouter.route('/:leaderId')
-.options(cors,corsWithOptions, (req, res) => {
+.options(cors.corsWithOptions, (req, res) => {
     res.sendStatus(200);
 })
 .get(cors.cors, (req,res,next) => {
