@@ -64,7 +64,7 @@ Route::put(
     [ListingController::class, 'update']
     )->middleware('auth');
 
-//Update listing
+//Update song
 Route::put(
     '/songs/{song}/',
     [SongController::class, 'update']
